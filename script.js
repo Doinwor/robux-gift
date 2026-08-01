@@ -158,7 +158,7 @@ function appendChat(html, cls) {
 }
 
 function botTypingThen(reply) {
-  const t = appendChat('Поддержка печатает<span class="typing-dots">..<span>.</span></span>', 'typing');
+  const t = appendChat('Поддержка печатает<span class="typing-dots"><span>.</span><span>.</span><span>.</span></span>', 'typing');
   const delay = Math.min(2000, 700 + reply.length * 15);
   setTimeout(() => {
     t.remove();
