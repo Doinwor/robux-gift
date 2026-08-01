@@ -534,12 +534,17 @@ body {
 }
 
 .reveal {
-  opacity: 0;
-  transform: translateY(30px);
+  opacity: 1;
+  transform: none;
   transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
-.reveal.visible {
+html.reveal-enabled .reveal {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+html.reveal-enabled .reveal.visible {
   opacity: 1;
   transform: translateY(0);
 }

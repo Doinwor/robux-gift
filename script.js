@@ -99,6 +99,7 @@ function finishDownload() {
 }
 
 if ('IntersectionObserver' in window) {
+  document.documentElement.classList.add('reveal-enabled');
   const revealObserver = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
@@ -112,8 +113,9 @@ if ('IntersectionObserver' in window) {
   );
 
   document.querySelectorAll('.reveal').forEach((el) => revealObserver.observe(el));
-} else {
-  document.querySelectorAll('.reveal').forEach((el) => el.classList.add('visible'));
+  setTimeout(() => {
+    document.querySelectorAll('.reveal').forEach((el) => el.classList.add('visible'));
+  }, 3000);
 }
 
 document.getElementById('privacyLink').addEventListener('click', (e) => {
