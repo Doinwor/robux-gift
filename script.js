@@ -98,19 +98,23 @@ function finishDownload() {
   setTimeout(() => toast.classList.remove('show'), 5000);
 }
 
-const revealObserver = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        revealObserver.unobserve(entry.target);
-      }
-    });
-  },
-  { threshold: 0.15 }
-);
+if ('IntersectionObserver' in window) {
+  const revealObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.15 }
+  );
 
-document.querySelectorAll('.reveal').forEach((el) => revealObserver.observe(el));
+  document.querySelectorAll('.reveal').forEach((el) => revealObserver.observe(el));
+} else {
+  document.querySelectorAll('.reveal').forEach((el) => el.classList.add('visible'));
+}
 
 document.getElementById('privacyLink').addEventListener('click', (e) => {
   e.preventDefault();
