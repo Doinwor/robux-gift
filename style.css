@@ -1,0 +1,647 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: #0b0d17;
+  color: #e8e8f0;
+  overflow-x: hidden;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.header {
+  background: #12152a;
+  border-bottom: 2px solid #ff7a00;
+  padding: 14px 0;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-robot {
+  font-size: 34px;
+  filter: drop-shadow(0 0 8px #ff7a00);
+}
+
+.logo-title {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 15px;
+  color: #ff7a00;
+  text-shadow: 0 0 10px rgba(255, 122, 0, 0.6);
+}
+
+.logo-sub {
+  font-size: 11px;
+  color: #8a8fb3;
+}
+
+.online-counter {
+  font-size: 14px;
+  color: #b6b9d6;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #1a1e38;
+  padding: 6px 14px;
+  border-radius: 20px;
+  border: 1px solid #2c3157;
+}
+
+.online-counter b {
+  color: #6bff8a;
+}
+
+.online-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #22c55e;
+  animation: pulse-dot 1.2s infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.6); }
+  50% { box-shadow: 0 0 0 6px rgba(34, 197, 94, 0); }
+}
+
+.hero {
+  position: relative;
+  text-align: center;
+  padding: 70px 16px 80px;
+  background: radial-gradient(circle at 50% 0%, #2a1633 0%, #0b0d17 70%);
+  overflow: hidden;
+}
+
+.coins-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.coin {
+  position: absolute;
+  top: -40px;
+  font-size: 26px;
+  animation: fall 6s linear infinite;
+  opacity: 0;
+}
+
+@keyframes fall {
+  0% { transform: translateY(0) rotate(0deg); opacity: 0.9; }
+  100% { transform: translateY(640px) rotate(360deg); opacity: 0; }
+}
+
+.hero-title {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 30px;
+  line-height: 1.5;
+  color: #fff;
+  text-shadow: 0 0 20px #ff7a00, 0 0 40px rgba(255, 122, 0, 0.5);
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  from { text-shadow: 0 0 15px #ff7a00, 0 0 30px rgba(255, 122, 0, 0.4); }
+  to { text-shadow: 0 0 25px #ff7a00, 0 0 55px rgba(255, 122, 0, 0.8); }
+}
+
+.hero-sub {
+  margin-top: 18px;
+  font-size: 18px;
+  color: #cfd2e8;
+}
+
+.hero-badge {
+  display: inline-block;
+  margin-top: 24px;
+  padding: 10px 22px;
+  background: #ff4d4d;
+  border-radius: 30px;
+  font-weight: bold;
+  color: #fff;
+  box-shadow: 0 0 20px rgba(255, 77, 77, 0.5);
+  animation: shake 1s infinite;
+}
+
+@keyframes shake {
+  0%, 100% { transform: rotate(0); }
+  25% { transform: rotate(-2deg); }
+  75% { transform: rotate(2deg); }
+}
+
+.timer-section {
+  text-align: center;
+  padding: 26px 16px;
+  background: #12152a;
+}
+
+.timer-label {
+  font-size: 16px;
+  color: #ff9b9b;
+  margin-bottom: 10px;
+}
+
+.timer {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 36px;
+  color: #ff4d4d;
+  text-shadow: 0 0 15px rgba(255, 77, 77, 0.7);
+  letter-spacing: 3px;
+  animation: blink 1s step-start infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0.85; }
+}
+
+.social-proof {
+  padding: 50px 16px;
+}
+
+.downloads-banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 20px;
+  background: linear-gradient(90deg, #1a2c1e, #14301d, #1a2c1e);
+  border: 1px solid #22c55e;
+  border-radius: 14px;
+  padding: 16px;
+  margin-bottom: 40px;
+}
+
+.downloads-count {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 24px;
+  color: #22c55e;
+}
+
+.section-title {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 16px;
+  text-align: center;
+  color: #ff7a00;
+  margin-bottom: 22px;
+}
+
+.comments {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 620px;
+  margin: 0 auto 40px;
+  min-height: 190px;
+}
+
+.comment {
+  background: #141830;
+  border: 1px solid #262b4f;
+  border-left: 4px solid #ff7a00;
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 14px;
+  animation: slide-in 0.4s ease;
+  display: flex;
+  gap: 8px;
+}
+
+@keyframes slide-in {
+  from { opacity: 0; transform: translateY(-12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.comment-name {
+  color: #ff9d4d;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+.comment-time {
+  margin-left: auto;
+  color: #5d6390;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.reviews {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+}
+
+.review-card {
+  display: flex;
+  gap: 12px;
+  background: #12152a;
+  border: 1px solid #262b4f;
+  border-radius: 14px;
+  padding: 16px;
+}
+
+.avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--c);
+  color: #0b0d17;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.review-name {
+  font-weight: bold;
+  color: #fff;
+}
+
+.review-text {
+  font-size: 14px;
+  color: #c3c6df;
+  margin-top: 4px;
+}
+
+.review-stars {
+  color: #ffc94d;
+  margin-top: 6px;
+}
+
+.trust {
+  background: #101428;
+  padding: 40px 16px;
+  text-align: center;
+}
+
+.trust-check {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 22px;
+  color: #22c55e;
+  text-shadow: 0 0 20px rgba(34, 197, 94, 0.6);
+  margin-bottom: 24px;
+}
+
+.trust-item {
+  display: inline-block;
+  margin: 6px;
+  padding: 10px 18px;
+  background: #181d38;
+  border: 1px solid #2c3157;
+  border-radius: 30px;
+  color: #d5d8ee;
+  font-size: 15px;
+}
+
+.download-section {
+  text-align: center;
+  padding: 60px 16px 70px;
+  background: radial-gradient(circle at 50% 100%, #3a1a08 0%, #0b0d17 75%);
+}
+
+.download-btn {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #fff;
+  background: linear-gradient(180deg, #ff9a00, #ff4a00);
+  border: none;
+  border-radius: 16px;
+  padding: 24px 36px;
+  cursor: pointer;
+  box-shadow: 0 8px 0 #b03200, 0 0 40px rgba(255, 122, 0, 0.6);
+  animation: pulse 1.4s infinite;
+  transition: transform 0.1s;
+}
+
+.download-btn:hover {
+  transform: translateY(-2px);
+}
+
+.download-btn:active {
+  transform: translateY(4px);
+  box-shadow: 0 4px 0 #b03200;
+}
+
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 8px 0 #b03200, 0 0 25px rgba(255, 122, 0, 0.5); }
+  50% { box-shadow: 0 8px 0 #b03200, 0 0 60px rgba(255, 122, 0, 0.9); }
+}
+
+.fine-print {
+  margin-top: 22px;
+  font-size: 12px;
+  color: #6d7199;
+}
+
+.footer {
+  border-top: 1px solid #1f2342;
+  padding: 30px 16px;
+  text-align: center;
+  font-size: 13px;
+  color: #6d7199;
+}
+
+.footer a {
+  display: inline-block;
+  margin-top: 10px;
+  color: #8a8fb3;
+}
+
+.test-drive {
+  text-align: center;
+  padding: 50px 16px 20px;
+}
+
+.test-drive-sub {
+  color: #b6b9d6;
+  margin-bottom: 24px;
+  font-size: 15px;
+}
+
+.test-drive-btn {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 13px;
+  color: #0b0d17;
+  background: linear-gradient(180deg, #8affb0, #22c55e);
+  border: none;
+  border-radius: 14px;
+  padding: 18px 30px;
+  cursor: pointer;
+  box-shadow: 0 6px 0 #0d6b2f, 0 0 30px rgba(34, 197, 94, 0.5);
+  transition: transform 0.1s;
+}
+
+.test-drive-btn:hover {
+  transform: translateY(-2px);
+}
+
+.test-drive-btn:active {
+  transform: translateY(4px);
+  box-shadow: 0 2px 0 #0d6b2f;
+}
+
+.bsod {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: #0d64e0;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 24px;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  cursor: default;
+}
+
+.bsod.show {
+  display: flex;
+  animation: bsod-in 0.3s ease;
+}
+
+@keyframes bsod-in {
+  from { opacity: 0; transform: scale(1.05); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.bsod-emoji {
+  font-size: 70px;
+  margin-bottom: 24px;
+}
+
+.bsod-title {
+  color: #fff;
+  font-size: clamp(18px, 4vw, 32px);
+  font-weight: bold;
+  max-width: 700px;
+  line-height: 1.3;
+  margin-bottom: 30px;
+}
+
+.bsod-list {
+  list-style: none;
+  color: #cfe0ff;
+  font-size: clamp(14px, 2.5vw, 18px);
+  line-height: 2;
+  margin-bottom: 34px;
+}
+
+.bsod-fine {
+  color: #ffd166;
+  font-size: clamp(12px, 2vw, 15px);
+  animation: blink 1s step-start infinite;
+  margin-bottom: 36px;
+}
+
+.bsod-close {
+  font-size: clamp(16px, 3vw, 22px);
+  font-weight: bold;
+  color: #fff;
+  background: #22c55e;
+  border: none;
+  border-radius: 14px;
+  padding: 18px 44px;
+  cursor: pointer;
+  box-shadow: 0 8px 0 #0d6b2f, 0 0 40px rgba(34, 197, 94, 0.7);
+  transition: transform 0.1s;
+}
+
+.bsod-close:hover {
+  transform: translateY(-2px);
+}
+
+.bsod-close:active {
+  transform: translateY(4px);
+  box-shadow: 0 4px 0 #0d6b2f;
+}
+
+.joke-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 250;
+  background: rgba(0, 0, 0, 0.8);
+  align-items: center;
+  justify-content: center;
+}
+
+.joke-modal.show {
+  display: flex;
+}
+
+.joke-box {
+  width: min(420px, 90vw);
+  background: #141830;
+  border: 2px solid #22c55e;
+  border-radius: 16px;
+  padding: 34px 26px;
+  text-align: center;
+  box-shadow: 0 0 50px rgba(34, 197, 94, 0.35);
+  animation: slide-up 0.3s ease;
+}
+
+.joke-emoji {
+  font-size: 64px;
+  margin-bottom: 16px;
+}
+
+.joke-text {
+  font-size: 18px;
+  color: #e8e8f0;
+  line-height: 1.6;
+  margin-bottom: 26px;
+}
+
+.joke-btn {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 13px;
+  color: #0b0d17;
+  background: linear-gradient(180deg, #8affb0, #22c55e);
+  border: none;
+  border-radius: 12px;
+  padding: 16px 30px;
+  cursor: pointer;
+  box-shadow: 0 6px 0 #0d6b2f;
+}
+
+.joke-btn:active {
+  transform: translateY(4px);
+  box-shadow: 0 2px 0 #0d6b2f;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.comment.typing {
+  color: #6d7199;
+  font-style: italic;
+}
+
+@keyframes typing-dot {
+  0%, 60%, 100% { opacity: 0.3; }
+  30% { opacity: 1; }
+}
+
+.typing-dots span {
+  animation: typing-dot 1s infinite;
+}
+
+.typing-dots span:nth-child(2) { animation-delay: 0.2s; }
+.typing-dots span:nth-child(3) { animation-delay: 0.4s; }
+
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  z-index: 100;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-overlay.show {
+  display: flex;
+}
+
+.modal {
+  width: min(420px, 90vw);
+  background: #141830;
+  border: 2px solid #ff7a00;
+  border-radius: 16px;
+  padding: 30px;
+  text-align: center;
+  box-shadow: 0 0 50px rgba(255, 122, 0, 0.3);
+}
+
+.modal-title {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 14px;
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+.progress-track {
+  height: 14px;
+  background: #0b0d17;
+  border: 1px solid #2c3157;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  width: 0;
+  background: linear-gradient(90deg, #ff9a00, #ff4a00);
+  transition: width 0.1s linear;
+}
+
+.modal-sub {
+  margin-top: 14px;
+  font-size: 14px;
+  color: #c3c6df;
+}
+
+.toast {
+  display: none;
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #16a34a;
+  color: #fff;
+  font-weight: bold;
+  padding: 14px 24px;
+  border-radius: 12px;
+  box-shadow: 0 6px 30px rgba(22, 163, 74, 0.5);
+  z-index: 110;
+  width: min(520px, 90vw);
+  text-align: center;
+}
+
+.toast.show {
+  display: block;
+  animation: slide-up 0.4s ease;
+}
+
+@keyframes slide-up {
+  from { opacity: 0; transform: translate(-50%, 20px); }
+  to { opacity: 1; transform: translate(-50%, 0); }
+}
+
+@media (max-width: 600px) {
+  .hero-title { font-size: 18px; }
+  .timer { font-size: 26px; }
+  .download-btn { font-size: 13px; padding: 18px 20px; }
+}

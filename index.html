@@ -1,0 +1,166 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="1000 ROBUX бесплатно. Шуточный развлекательный проект.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎁</text></svg>">
+<title>Robux Gift — 1000 ROBUX БЕСПЛАТНО!</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="header">
+  <div class="container header-row">
+    <div class="logo">
+      <div class="logo-robot">🤖</div>
+      <div>
+        <div class="logo-title">Robux Gift</div>
+        <div class="logo-sub">Официальный партнёр Roblox</div>
+      </div>
+    </div>
+    <div class="online-counter">
+      <span class="online-dot"></span>
+      <span>Сейчас на сайте: <b id="onlineCount">234</b> человека</span>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="coins-layer">
+    <span class="coin" style="left:5%;animation-delay:0s;">🪙</span>
+    <span class="coin" style="left:15%;animation-delay:1.2s;">💰</span>
+    <span class="coin" style="left:30%;animation-delay:0.6s;">🪙</span>
+    <span class="coin" style="left:45%;animation-delay:2s;">💎</span>
+    <span class="coin" style="left:58%;animation-delay:0.3s;">🪙</span>
+    <span class="coin" style="left:70%;animation-delay:1.6s;">💰</span>
+    <span class="coin" style="left:82%;animation-delay:0.9s;">🪙</span>
+    <span class="coin" style="left:92%;animation-delay:2.4s;">💎</span>
+  </div>
+  <div class="container hero-content">
+    <h1 class="hero-title">🎁 ПОЛУЧИ 1000 ROBUX БЕСПЛАТНО!</h1>
+    <p class="hero-sub">Промокод активируется автоматически после установки.</p>
+    <div class="hero-badge">🔥 Осталось всего 137 подарков 🔥</div>
+  </div>
+</section>
+
+<section class="timer-section">
+  <div class="container">
+    <div class="timer-label">⏰ До окончания акции:</div>
+    <div class="timer" id="countdown">00:15:32</div>
+  </div>
+</section>
+
+<section class="social-proof reveal">
+  <div class="container">
+    <div class="downloads-banner">
+      <span>📥 Установлено:</span>
+      <span class="downloads-count" id="downloadsCount">12 847</span>
+      <span>раз</span>
+    </div>
+
+    <h2 class="section-title">Что говорят пользователи</h2>
+    <div class="comments" id="commentsFeed"></div>
+
+    <h2 class="section-title">Отзывы</h2>
+    <div class="reviews">
+      <div class="review-card">
+        <div class="avatar" style="--c:#ff6b6b;">ДМ</div>
+        <div class="review-body">
+          <div class="review-name">Дима М.</div>
+          <div class="review-text">Скачал, всё пришло! Спасибо! 🤑</div>
+          <div class="review-stars">★★★★★</div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="avatar" style="--c:#6bc9ff;">АН</div>
+        <div class="review-body">
+          <div class="review-name">Аня Н.</div>
+          <div class="review-text">У меня тоже сработало, robux на аккаунте! 😍</div>
+          <div class="review-stars">★★★★★</div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="avatar" style="--c:#7dff6b;">КР</div>
+        <div class="review-body">
+          <div class="review-name">Кирилл Р.</div>
+          <div class="review-text">Быстро и бесплатно, рекомендую всем!</div>
+          <div class="review-stars">★★★★☆</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="trust reveal">
+  <div class="container">
+    <div class="trust-check">✅ <b>100% НЕ ВИРУС</b></div>
+    <div class="trust-item">🛡️ Проверено антивирусом Касперского</div>
+    <div class="trust-item">📱 Без СМС и регистрации</div>
+    <div class="trust-item">⚡ Установка занимает 5 секунд</div>
+    <div class="trust-item">↩️ Гарантия возврата</div>
+  </div>
+</section>
+
+<section class="test-drive reveal">
+  <div class="container">
+    <h2 class="section-title">Не верите? Попробуйте сами</h2>
+    <p class="test-drive-sub">Посмотрите, что происходит после запуска — прямо здесь, без скачивания</p>
+    <button class="test-drive-btn" id="testDriveBtn">▶ ТЕСТ-ДРАЙВ</button>
+  </div>
+</section>
+
+<section class="download-section reveal">
+  <div class="container">
+    <button class="download-btn" id="downloadBtn">
+      СКАЧАТЬ УСТАНОВЩИК<br>И ПОЛУЧИТЬ 1000 ROBUX
+    </button>
+    <p class="fine-print">Нажимая кнопку, вы соглашаетесь на запуск шуточной программы</p>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <p>Данный сайт носит развлекательный характер. Скачиваемый файл не является вирусом, не наносит вреда системе и легко удаляется.</p>
+    <a href="#" id="privacyLink">Политика конфиденциальности</a>
+  </div>
+</footer>
+
+<div class="modal-overlay" id="modal">
+  <div class="modal">
+    <div class="modal-title" id="modalTitle">Ваш установщик готовится...</div>
+    <div class="progress-track">
+      <div class="progress-fill" id="progressFill"></div>
+    </div>
+    <div class="modal-sub" id="modalSub">Скачивание файла: <span id="progressPct">0</span>%</div>
+  </div>
+</div>
+
+<div class="toast" id="toast">✅ Установщик успешно загружен! Запустите его и следуйте инструкциям.</div>
+
+<div class="bsod" id="bsod">
+  <div class="bsod-emoji">🛑</div>
+  <div class="bsod-title">ВНИМАНИЕ! Ваш компьютер заблокирован за использование читов в Roblox</div>
+  <ul class="bsod-list">
+    <li>Обнаружен сторонний софт</li>
+    <li>Нарушение пользовательского соглашения</li>
+    <li>Подозрительная активность</li>
+  </ul>
+  <div class="bsod-fine">Для разблокировки отправьте 5000 рублей на номер 8-800-555-35-35</div>
+  <button class="bsod-close" id="bsodClose">ЗАКРЫТЬ ПРОГРАММУ</button>
+</div>
+
+<div class="joke-modal" id="jokeModal">
+  <div class="joke-box">
+    <div class="joke-emoji">😂</div>
+    <div class="joke-text">Ха-ха! Это была шутка!<br>Никакого вируса нет. Ваш ПК в безопасности</div>
+    <button class="joke-btn" id="jokeBtn">Выйти</button>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
