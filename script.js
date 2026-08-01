@@ -7,11 +7,6 @@ const modal = document.getElementById('modal');
 const progressFill = document.getElementById('progressFill');
 const progressPct = document.getElementById('progressPct');
 const toast = document.getElementById('toast');
-const testDriveBtn = document.getElementById('testDriveBtn');
-const bsod = document.getElementById('bsod');
-const bsodClose = document.getElementById('bsodClose');
-const jokeModal = document.getElementById('jokeModal');
-const jokeBtn = document.getElementById('jokeBtn');
 
 let online = 234;
 setInterval(() => {
@@ -102,32 +97,6 @@ function finishDownload() {
   toast.classList.add('show');
   setTimeout(() => toast.classList.remove('show'), 5000);
 }
-
-testDriveBtn.addEventListener('click', () => {
-  bsod.classList.add('show');
-});
-
-function closeBsod() {
-  bsod.classList.remove('show');
-  jokeModal.classList.add('show');
-}
-
-bsodClose.addEventListener('click', closeBsod);
-
-function closeJoke() {
-  jokeModal.classList.remove('show');
-}
-
-jokeBtn.addEventListener('click', closeJoke);
-
-document.addEventListener('keydown', (e) => {
-  if (bsod.classList.contains('show') && (e.key === 'Escape' || e.key === 'F4')) {
-    closeBsod();
-  }
-  if (jokeModal.classList.contains('show') && e.key === 'Escape') {
-    closeJoke();
-  }
-});
 
 const revealObserver = new IntersectionObserver(
   (entries) => {
