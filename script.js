@@ -14,16 +14,51 @@ setInterval(() => {
   onlineCount.textContent = online;
 }, 5000);
 
-let seconds = 15 * 60 + 32;
-setInterval(() => {
-  seconds--;
-  if (seconds < 0) seconds = 15 * 60 + 32;
+let promoEnded = localStorage.getItem('promoEnded') === '1';
+let deadline = parseInt(localStorage.getItem('promoDeadline'), 10) || 0;
+
+if (promoEnded) {
+  deadline = 0;
+} else if (deadline > 0 && deadline < Date.now()) {
+  promoEnded = true;
+  localStorage.setItem('promoEnded', '1');
+} else if (!deadline) {
+  deadline = Date.now() + (15 * 60 + 32) * 1000;
+  localStorage.setItem('promoDeadline', deadline);
+}
+
+function endPromo() {
+  if (downloadBtn.disabled) return;
+  downloadBtn.disabled = true;
+  downloadBtn.classList.add('ended');
+  downloadBtn.innerHTML = 'АКЦИЯ ЗАВЕРШЕНА';
+  countdownEl.textContent = '00:00:00';
+  toast.textContent = 'Акция завершена 😔 Следите за анонсами — скоро подарим ещё!';
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 7000);
+}
+
+function tick() {
+  if (promoEnded) {
+    countdownEl.textContent = '00:00:00';
+    return;
+  }
+  const seconds = Math.max(0, Math.floor((deadline - Date.now()) / 1000));
+  if (seconds <= 0) {
+    promoEnded = true;
+    localStorage.setItem('promoEnded', '1');
+    endPromo();
+    return;
+  }
   const h = Math.floor(seconds / 3600);
   const m = Math.floor((seconds % 3600) / 60);
   const s = seconds % 60;
   countdownEl.textContent =
     String(h).padStart(2, '0') + ':' + String(m).padStart(2, '0') + ':' + String(s).padStart(2, '0');
-}, 1000);
+}
+
+tick();
+setInterval(tick, 1000);
 
 let downloads = 12847;
 setInterval(() => {
@@ -68,6 +103,7 @@ for (let i = 0; i < 3; i++) addComment();
 setInterval(showTypingIndicator, 6500);
 
 downloadBtn.addEventListener('click', () => {
+  if (promoEnded) return;
   modal.classList.add('show');
   progressFill.style.width = '0%';
   progressPct.textContent = '0';
