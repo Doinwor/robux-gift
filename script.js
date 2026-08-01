@@ -117,8 +117,3 @@ if ('IntersectionObserver' in window) {
     document.querySelectorAll('.reveal').forEach((el) => el.classList.add('visible'));
   }, 3000);
 }
-
-document.getElementById('privacyLink').addEventListener('click', (e) => {
-  e.preventDefault();
-  alert('Политика конфиденциальности: мы ничего не собираем. Это шутка 😄');
-});
