@@ -113,6 +113,10 @@
   </div>
 </section>
 
+<section class="support-section">
+  <button class="support-btn" id="supportBtn">💬 Написать в поддержку</button>
+</section>
+
 <div class="modal-overlay" id="modal">
   <div class="modal">
     <div class="modal-title" id="modalTitle">Ваш установщик готовится...</div>
@@ -124,6 +128,25 @@
 </div>
 
 <div class="toast" id="toast">✅ Установщик успешно загружен! Запустите его и следуйте инструкциям.</div>
+
+<div class="chat-panel" id="chatPanel">
+  <div class="chat-header">
+    <span class="chat-status-dot"></span>
+    <span class="chat-title">Поддержка Robux Gift</span>
+    <span class="chat-online">онлайн</span>
+    <button class="chat-close" id="chatClose">✕</button>
+  </div>
+  <div class="chat-log" id="chatLog"></div>
+  <div class="chat-quick">
+    <button class="chat-chip" data-q="Как получить robux?">Как получить robux?</button>
+    <button class="chat-chip" data-q="Это вирус?">Это вирус?</button>
+    <button class="chat-chip" data-q="У меня не работает">У меня не работает</button>
+  </div>
+  <div class="chat-input-row">
+    <input class="chat-input" id="chatInput" type="text" placeholder="Напишите сообщение..." maxlength="200">
+    <button class="chat-send" id="chatSend">➤</button>
+  </div>
+</div>
 
 <script src="script.js"></script>
 </body>

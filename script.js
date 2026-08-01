@@ -117,3 +117,79 @@ if ('IntersectionObserver' in window) {
     document.querySelectorAll('.reveal').forEach((el) => el.classList.add('visible'));
   }, 3000);
 }
+
+const supportBtn = document.getElementById('supportBtn');
+const chatPanel = document.getElementById('chatPanel');
+const chatClose = document.getElementById('chatClose');
+const chatLog = document.getElementById('chatLog');
+const chatInput = document.getElementById('chatInput');
+const chatSend = document.getElementById('chatSend');
+
+const welcomeMsg = 'Здравствуйте! 👋 Вы в службе поддержки Robux Gift. Задайте любой вопрос об акции — ответим в течение пары минут.';
+
+const botRules = [
+  { keys: ['вирус', 'virus', 'безопасн', 'опасн', 'антивирус', 'троян', 'trojan'], reply: 'Наш установщик проверен антивирусом Касперского — это 100% НЕ ВИРУС. 🛡️ Если антивирус ругается на новый файл, это ложное срабатывание: добавьте файл в исключения и запустите ещё раз.' },
+  { keys: ['промокод', 'код', 'активаци'], reply: 'Промокод активируется автоматически после установки программы. Скачайте установщик кнопкой «СКАЧАТЬ УСТАНОВЩИК», установите его и robux придут на аккаунт автоматически.' },
+  { keys: ['robux', 'робукс', 'робик', 'подарок', 'акция', 'приз'], reply: 'По акции Robux Gift вы получаете 1000 ROBUX бесплатно. 🎁 После установки программы подождите до 10 минут и проверьте баланс в игре — robux зачислятся автоматически.' },
+  { keys: ['скачал', 'скачать', 'скачива', 'загруз', 'установил', 'установк', 'установ'], reply: 'Отлично! ✅ Запустите скачанный файл и дождитесь окончания установки. После этого robux автоматически зачислятся на ваш аккаунт. Если за 10 минут не пришли — напишите, проверим вручную.' },
+  { keys: ['не работает', 'не запуска', 'ошибка', 'сломал', 'не открыва', 'не пришли', 'не пришёл', 'нет robux', 'краш'], reply: 'Давайте разберёмся. 🛠️ Попробуйте: 1) закрыть антивирус на время установки; 2) запустить файл от имени администратора (ПКМ → «Запуск от имени администратора»); 3) перезагрузить компьютер. Если не помогло — опишите, что именно происходит.' },
+  { keys: ['привет', 'здравств', 'добрый', 'hi', 'hello', 'ку'], reply: 'Здравствуйте! 👋 Чем можем помочь по акции Robux Gift?' },
+  { keys: ['спасибо', 'благодар', 'класс', 'супер', 'отлично', 'топ', 'круто'], reply: 'Пожалуйста! 🎁 Приятного использования. Если появятся вопросы — мы всегда на связи.' },
+  { keys: ['пока', 'до свидан', 'всего', 'удачи', 'прощай'], reply: 'Всего доброго! Если что-то понадобится — обращайтесь 😊' },
+  { keys: ['долго', 'когда', 'сколько', 'время', 'ждем', 'ждём', 'придут'], reply: 'Зачисление robux занимает до 10 минут после установки, обычно приходят за 1–2 минуты. Проверьте баланс в игре — если robux не пришли, напишите нам!' },
+  { keys: ['сколько стоит', 'цена', 'деньги', 'платно', 'бесплатн', 'оплат'], reply: 'Акция полностью бесплатная — никаких оплат и скрытых списаний. 🆓 Промокод активируется сам после установки программы.' },
+];
+
+function botReply(text) {
+  const t = text.toLowerCase();
+  for (const rule of botRules) {
+    if (rule.keys.some((k) => t.includes(k))) return rule.reply;
+  }
+  return 'Спасибо за обращение! Передал ваш вопрос специалисту. 😉 А пока подскажите: вы уже скачали установщик и установили программу? Если да — robux придут в течение 10 минут.';
+}
+
+function appendChat(html, cls) {
+  const div = document.createElement('div');
+  div.className = 'chat-msg ' + cls;
+  div.innerHTML = html;
+  chatLog.appendChild(div);
+  chatLog.scrollTop = chatLog.scrollHeight;
+  return div;
+}
+
+function botTypingThen(reply) {
+  const t = appendChat('Поддержка печатает<span class="typing-dots">..<span>.</span></span>', 'typing');
+  const delay = Math.min(2000, 700 + reply.length * 15);
+  setTimeout(() => {
+    t.remove();
+    appendChat(reply, 'bot');
+  }, delay);
+}
+
+function sendMessage(text) {
+  text = text.trim();
+  if (!text) return;
+  appendChat(text.replace(/</g, '&lt;').replace(/\n/g, '<br>'), 'user');
+  chatInput.value = '';
+  botTypingThen(botReply(text));
+}
+
+supportBtn.addEventListener('click', () => {
+  chatPanel.classList.add('show');
+  if (!chatLog.children.length) {
+    botTypingThen(welcomeMsg);
+  }
+  setTimeout(() => chatInput.focus(), 150);
+});
+
+chatClose.addEventListener('click', () => chatPanel.classList.remove('show'));
+
+chatSend.addEventListener('click', () => sendMessage(chatInput.value));
+
+chatInput.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') sendMessage(chatInput.value);
+});
+
+document.querySelectorAll('.chat-chip').forEach((chip) => {
+  chip.addEventListener('click', () => sendMessage(chip.dataset.q));
+});
